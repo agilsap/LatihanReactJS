@@ -1,8 +1,8 @@
 //rafce
 import React from "react";
-import {Table} from 'react-bootstrap'
+import { Table } from "react-bootstrap";
 
-const Tabel = () => {
+const Tabel = ({ makanans, editData, hapusData }) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -15,13 +15,30 @@ const Tabel = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Aksi</td>
-        </tr>
+        {makanans.map((makanan, index) => {
+          return (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{makanan.nama}</td>
+              <td>{makanan.deskripsi}</td>
+              <td>Rp. {makanan.harga}</td>
+              <td>
+                <button
+                  className="btn btn-warning mr-2"
+                  onClick={() => editData(makanan.id)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => hapusData(makanan.id)}
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </Table>
   );
